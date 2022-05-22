@@ -45,3 +45,54 @@ int _printf(char* format, ...)
 	va_end(args);
 	return (number_count);
 }
+
+/**
+ * print_integer - prints an integer recursively
+ * @number: input value
+ * Return: Always 0
+ */
+
+int print_integer(int number)
+{
+	if (number < 0)
+	{
+		_putchar('-');
+		number = -number;
+	}
+	if (number / 10)
+	{
+		print_integer(number / 10);
+	}
+	_putchar((number % 10) + '0');
+
+}
+
+/**
+ * print_string - iterates through strings and print it out to the standard output
+ * @c: input value
+ * Return: returns length of string
+ */
+char print_string(char *c)
+{
+    int i, n = 0;
+	for (i = 0; c[i] != '\0';i++)
+    {
+        if (c[i] != '\0')
+	    {
+            n++;
+            _putchar(c[i]);
+        }
+    }
+    return (n);
+}
+
+/**
+ * _putchar - writes to the stdout
+ * @c: input
+ * Return: Always 0
+ */
+
+int _putchar(char c)
+{
+	return(write(1, &c, 1));
+}
