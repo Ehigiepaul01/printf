@@ -57,5 +57,17 @@ char *fill_oct_array(char *bnr, char *oct);
 char *fill_long_oct_array(char *bnr, char *oct);
 char *fill_short_oct_array(char *bnr, char *oct);
 char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
+=======
+#ifndef _MAIN_H_
+#define _MAIN_H_
+#include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#endif
+int _printf(char* format, ...);
+int print_integer(int number);
+int _putchar(char c);
+char print_string(char *c);
+>>>>>>> 8a4d37873a15ac9a9ebb05c70ffcd4adefbcc5ce
+
+#endif /*MAIN_H*/
