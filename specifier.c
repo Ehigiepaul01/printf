@@ -1,4 +1,4 @@
-#include "main.h"
+ginclude "main.h"
 
 /**
  * get_specifier - finds the format func
@@ -46,29 +46,14 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
  *
  * Return: the number of bytes printed
  */
-int print_string(va_list ap, params_t *params)
+int get_print_func(char *s, va_list ap, params_t *params)
 {
-    char *str = va_arg(ap, char *);
-    int i, len = 0;
+	int (*f)(va_list, params_t *) = get_specifier(s);
 
-    if (!str)
-        str = "(null)";
-
-    if (params->precision >= 0) {
-        for (i = 0; str[i] && i < params->precision; i++) {
-            _putchar(str[i]);
-            len++;
-        }
-    } else {
-        for (i = 0; str[i]; i++) {
-            _putchar(str[i]);
-            len++;
-        }
-    }
-
-    return (len);
+	if (f)
+		return (f(ap, params));
+	return (0);
 }
-
 /**
  * get_flag - finds the flag func
  * @s: the format string
